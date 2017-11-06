@@ -11,24 +11,38 @@ import view.TwitterTree;
 public class User extends Observable implements Observer, TwitterTree{
 	
 	private String uniqueID;
-	private Set<String> followers;
-	private Set<String> following;
+	private Set<User> followers;
+	private Set<User> following;
 	private Set<String> newsFeed;
 	
-	public User() {
-		
+	public User(String userID) {
+		uniqueID = userID;
+		followers = new HashSet<>();
+		following = new HashSet<>();
+		newsFeed = new HashSet<>();
 	}
-
-	@Override
-	public String getUser(String user) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public void addObserver(User obs) {
+		followers.add(obs);
+		obs.following.add(this);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		if (arg instanceof String) {
+			newsFeed.add((String) arg);
+		}
 		
+	}
+
+	@Override
+	public User getUser(User user) {
+		return user;
+	}
+
+	public void postTweet(String tweet) {
+		newsFeed.add(tweet);
+		notifyObservers(tweet);
 	}
 
 

@@ -1,20 +1,24 @@
 package data;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import view.TwitterTree;
 
 public class UserGroup implements TwitterTree {
 	
 	private String uniqueID;
+	private Set<User> users;
 	
-	
-	public UserGroup() {
-		
+	public UserGroup(String groupID) {
+		uniqueID = groupID;
+		users = new HashSet<>();
 	}
 
 	@Override
-	public String getUser(String user) {
-		// TODO Auto-generated method stub
-		return null;
+	public User getUser(User user) {
+		return user;
+
 	}
 
 }

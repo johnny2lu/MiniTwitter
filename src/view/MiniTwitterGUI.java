@@ -8,6 +8,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.tree.TreeNode;
+
+import data.User;
 
 import java.awt.GridLayout;
 import javax.swing.JTextArea;
@@ -78,6 +81,7 @@ public class MiniTwitterGUI extends JFrame {
 		btnOpenUserView = new JButton("Open User View");
 		btnOpenUserView.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				openUserViewActionPerformed(e);
 			}
 		});
 		
@@ -189,6 +193,8 @@ public class MiniTwitterGUI extends JFrame {
 		}
 		else {
 			users.add(txtrUserid.getText());
+			User newUser = new User(txtrUserid.getText());
+			txtrUserid.setText("");
 		}
 	}
 	
@@ -201,6 +207,17 @@ public class MiniTwitterGUI extends JFrame {
 		}
 		else {
 			groups.add(txtrGroupid.getText());
+			txtrGroupid.setText("");
+		}
+	}
+	
+	private void openUserViewActionPerformed(ActionEvent e) {
+		TreeNode node = null;
+		if (node == null) {
+			JOptionPane.showMessageDialog(null, "Please select a user");
+		}
+		else {
+			new UserView((User) node).setVisible(true);
 		}
 	}
 }

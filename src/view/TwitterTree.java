@@ -1,5 +1,7 @@
 package view;
 
+import data.User;
+
 public interface TwitterTree {
-	public String getUser(String user);
+	public User getUser(User user);
 }
