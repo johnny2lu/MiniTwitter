@@ -8,17 +8,21 @@ import view.TwitterTree;
 public class UserGroup implements TwitterTree {
 	
 	private String uniqueID;
-	private Set<User> users;
+	private Set<TwitterTree> children;
 	
 	public UserGroup(String groupID) {
 		uniqueID = groupID;
-		users = new HashSet<>();
+		children = new HashSet<>();
 	}
 
 	@Override
 	public User getUser(User user) {
 		return user;
 
+	}
+
+	public void appendChild(TwitterTree child) {
+		children.add(child);
 	}
 
 }

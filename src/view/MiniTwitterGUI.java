@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.tree.TreeNode;
 
 import data.User;
+import data.UserGroup;
 
 import java.awt.GridLayout;
 import javax.swing.JTextArea;
@@ -39,6 +40,8 @@ public class MiniTwitterGUI extends JFrame {
 	private JButton btnShowGroupTotal;
 	private JButton btnShowMessageTotal;
 	private JButton btnShowPositivePercentage;
+	private JTree tree;
+	private UserGroup root;
 	
 	private Set<String> users;
 	private Set<String> groups;
@@ -164,7 +167,8 @@ public class MiniTwitterGUI extends JFrame {
 					.addContainerGap())
 		);
 		
-		JTree tree = new JTree();
+		tree = new JTree();
+		root = new UserGroup("root");
 		jscrollPane.setColumnHeaderView(tree);
 		contentPane.setLayout(gl_contentPane);
 	}
@@ -193,7 +197,8 @@ public class MiniTwitterGUI extends JFrame {
 		}
 		else {
 			users.add(txtrUserid.getText());
-			User newUser = new User(txtrUserid.getText());
+			TreeNode tN = (TreeNode) tree.getLastSelectedPathComponent();
+			((UserGroup) tN).appendChild(new User(txtrUserid.getText()));
 			txtrUserid.setText("");
 		}
 	}
@@ -207,17 +212,26 @@ public class MiniTwitterGUI extends JFrame {
 		}
 		else {
 			groups.add(txtrGroupid.getText());
+			TreeNode tN = (TreeNode) tree.getLastSelectedPathComponent();
+			((UserGroup) tN).appendChild(new UserGroup(txtrGroupid.getText()));
 			txtrGroupid.setText("");
 		}
 	}
 	
 	private void openUserViewActionPerformed(ActionEvent e) {
-		TreeNode node = null;
+		TreeNode node = (TreeNode) tree.getLastSelectedPathComponent();
 		if (node == null) {
+			JOptionPane.showMessageDialog(null, "Please select a user");
+		}
+		else if (node instanceof UserGroup) {
 			JOptionPane.showMessageDialog(null, "Please select a user");
 		}
 		else {
 			new UserView((User) node).setVisible(true);
 		}
+	}
+	
+	public void updateTree() {
+		
 	}
 }

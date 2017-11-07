@@ -45,5 +45,15 @@ public class User extends Observable implements Observer, TwitterTree{
 		notifyObservers(tweet);
 	}
 
-
+	public Set<String> getFeed() {
+		return newsFeed;
+	}
+	
+	public Set<User> getFollowing() {
+		return following;
+	}
+	
+	public Set<User> getFollowers() {
+		return followers;
+	}
 }
