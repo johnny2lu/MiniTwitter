@@ -1,9 +1,11 @@
 package data;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.swing.tree.TreeNode;
 
+import info.Visitor;
 import view.TwitterTree;
+
+import java.util.*;
 
 public class UserGroup implements TwitterTree {
 	
@@ -20,9 +22,63 @@ public class UserGroup implements TwitterTree {
 		return user;
 
 	}
+	
+	public String getID() {
+		return uniqueID;
+	}
 
-	public void appendChild(TwitterTree child) {
+	public void add(TwitterTree child) {
 		children.add(child);
+	}
+
+	@Override
+	public TreeNode getChildAt(int childIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getChildCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public TreeNode getParent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getIndex(TreeNode node) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean getAllowsChildren() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isLeaf() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Enumeration<?> children() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		for (TwitterTree tree: children) {
+			tree.accept(visitor);
+		}
 	}
 
 }

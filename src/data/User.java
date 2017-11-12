@@ -1,11 +1,16 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
 
-import observer.Subject;
+import javax.swing.tree.TreeNode;
+
+import info.Visitor;
 import view.TwitterTree;
 
 public class User extends Observable implements Observer, TwitterTree{
@@ -13,13 +18,13 @@ public class User extends Observable implements Observer, TwitterTree{
 	private String uniqueID;
 	private Set<User> followers;
 	private Set<User> following;
-	private Set<String> newsFeed;
+	private List<String> newsFeed;
 	
 	public User(String userID) {
 		uniqueID = userID;
 		followers = new HashSet<>();
 		following = new HashSet<>();
-		newsFeed = new HashSet<>();
+		newsFeed = new ArrayList<>();
 	}
 	
 	public void addObserver(User obs) {
@@ -45,7 +50,7 @@ public class User extends Observable implements Observer, TwitterTree{
 		notifyObservers(tweet);
 	}
 
-	public Set<String> getFeed() {
+	public List<String> getFeed() {
 		return newsFeed;
 	}
 	
@@ -56,4 +61,53 @@ public class User extends Observable implements Observer, TwitterTree{
 	public Set<User> getFollowers() {
 		return followers;
 	}
+
+	@Override
+	public TreeNode getChildAt(int childIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getChildCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public TreeNode getParent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getIndex(TreeNode node) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean getAllowsChildren() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isLeaf() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Enumeration<?> children() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+		
+	}
+
 }

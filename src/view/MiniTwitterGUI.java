@@ -3,15 +3,15 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
-import javax.swing.tree.TreeNode;
+import javax.swing.*;
 
 import data.User;
 import data.UserGroup;
+import info.GroupTotal;
+import info.MessageTotal;
+import info.PositiveTotal;
+import info.UserTotal;
+import info.Visitor;
 
 import java.awt.GridLayout;
 import javax.swing.JTextArea;
@@ -19,13 +19,22 @@ import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
 import java.awt.event.ActionEvent;
 import javax.swing.JTree;
-
+/**
+ * 
+ * @author johnnylu
+ *
+ */
 public class MiniTwitterGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -42,6 +51,8 @@ public class MiniTwitterGUI extends JFrame {
 	private JButton btnShowPositivePercentage;
 	private JTree tree;
 	private UserGroup root;
+	private DefaultTreeModel defaultTree;
+	private DefaultMutableTreeNode defaultTreeNode;
 	
 	private Set<String> users;
 	private Set<String> groups;
@@ -59,8 +70,25 @@ public class MiniTwitterGUI extends JFrame {
 		groups = new HashSet<String>();
 		initComponents();
 	}
-	
+
+	/**
+	 * Initialize Java Swing components in UI
+	 */
 	public void initComponents() {
+		JFrame frame = new JFrame("Control Panel");
+		frame.setLayout(new GridLayout(1, 2));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		root = new UserGroup("root");
+		
+		//defaultTreeNode = new DefaultMutableTreeNode(root, true);
+		
+		defaultTree = new DefaultTreeModel(root);
+		
+		tree = new JTree(defaultTree);
+		tree.setRootVisible(true);
+		updateTree();
+		
 		txtrGroupid = new JTextArea();
 		
 		txtrUserid = new JTextArea();
@@ -93,27 +121,32 @@ public class MiniTwitterGUI extends JFrame {
 		btnShowUserTotal = new JButton("Show User Total");
 		btnShowUserTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				showUserTotalActionPerformed(e);
 			}
 		});
 		
 		btnShowGroupTotal = new JButton("Show Group Total");
 		btnShowGroupTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				showGroupTotalActionPerformed(e);
 			}
 		});
 		
 		btnShowMessageTotal = new JButton("Show Message Total");
 		btnShowMessageTotal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				showMessageTotalActionPerformed(e);
 			}
 		});
 		
 		btnShowPositivePercentage = new JButton("Show Positive Percentage");
 		btnShowPositivePercentage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				showPercentageTotalActionPerformed(e);
 			}
 		});
 		
+		// Align JPanel window
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -167,12 +200,62 @@ public class MiniTwitterGUI extends JFrame {
 					.addContainerGap())
 		);
 		
-		tree = new JTree();
-		root = new UserGroup("root");
 		jscrollPane.setColumnHeaderView(tree);
 		contentPane.setLayout(gl_contentPane);
 	}
 
+	protected void showPercentageTotalActionPerformed(ActionEvent e) {
+		TreeNode current = (TreeNode) tree.getLastSelectedPathComponent();
+		if (current != null) {
+			Visitor visitor = new PositiveTotal();
+			((TwitterTree) current).accept(visitor);
+			JOptionPane.showMessageDialog(null, ((PositiveTotal) visitor).getTotal());
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "There are no percentages available for this user");
+		}
+	}
+
+	protected void showMessageTotalActionPerformed(ActionEvent e) {
+		TreeNode current = (TreeNode) tree.getLastSelectedPathComponent();
+		if (current != null) {
+			Visitor visitor = new MessageTotal();
+			((TwitterTree) current).accept(visitor);
+			JOptionPane.showMessageDialog(null, ((MessageTotal) visitor).getTotal());
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "There are no messages for this user");
+		}
+	}
+
+	protected void showGroupTotalActionPerformed(ActionEvent e) {
+		TreeNode current = (TreeNode) tree.getLastSelectedPathComponent();
+		if (current != null) {
+			Visitor visitor = new GroupTotal();
+			((TwitterTree) current).accept(visitor);
+			JOptionPane.showMessageDialog(null, ((GroupTotal) visitor).getTotal());
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "There are no groups");
+		}
+	}
+
+	protected void showUserTotalActionPerformed(ActionEvent e) {
+		TreeNode current = (TreeNode) tree.getLastSelectedPathComponent();
+		if (current != null) {
+			Visitor visitor = new UserTotal();
+			((TwitterTree) current).accept(visitor);
+			JOptionPane.showMessageDialog(null, ((UserTotal) visitor).getTotal());
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "There are no users");
+		}
+		
+	}
+
+	/**
+	 * Initialize Singleton
+	 */
 	public static void getInstance() {
 		if (INSTANCE == null) {
 			synchronized(MiniTwitterGUI.class) {
@@ -188,22 +271,26 @@ public class MiniTwitterGUI extends JFrame {
 		}
 	}
 	
-	private void addUserButtonActionPerformed(ActionEvent e) {
+	protected void addUserButtonActionPerformed(ActionEvent e) {
+		TreeNode selected = (TreeNode) tree.getLastSelectedPathComponent();
 		if (txtrUserid.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Please enter a user to add");
 		}
 		else if (users.contains(txtrUserid.getText())) {
 			JOptionPane.showMessageDialog(null, "User ID already exists");
 		}
+		else if (selected == null) {
+			JOptionPane.showMessageDialog(null, "Please select a group to add user to");
+		}
 		else {
 			users.add(txtrUserid.getText());
-			TreeNode tN = (TreeNode) tree.getLastSelectedPathComponent();
-			((UserGroup) tN).appendChild(new User(txtrUserid.getText()));
+			((UserGroup) selected).add(new User(txtrUserid.getText()));
 			txtrUserid.setText("");
 		}
 	}
 	
-	private void addGroupButtonActionPerformed(ActionEvent e) {
+	protected void addGroupButtonActionPerformed(ActionEvent e) {
+		
 		if (txtrGroupid.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Please enter a group to add");
 		}
@@ -211,27 +298,38 @@ public class MiniTwitterGUI extends JFrame {
 			JOptionPane.showMessageDialog(null, "Group ID already exists");
 		}
 		else {
-			groups.add(txtrGroupid.getText());
-			TreeNode tN = (TreeNode) tree.getLastSelectedPathComponent();
-			((UserGroup) tN).appendChild(new UserGroup(txtrGroupid.getText()));
-			txtrGroupid.setText("");
+			TreeNode selected = (TreeNode) tree.getLastSelectedPathComponent();
+			if (selected == null) {
+				root.add(new UserGroup(txtrGroupid.getText()));
+			}
+			else {
+				((UserGroup) selected).add(new UserGroup(txtrGroupid.getText()));
+				groups.add(txtrGroupid.getText());
+				updateTree();
+				txtrGroupid.setText("");
+			}
 		}
 	}
 	
-	private void openUserViewActionPerformed(ActionEvent e) {
-		TreeNode node = (TreeNode) tree.getLastSelectedPathComponent();
-		if (node == null) {
+	protected void openUserViewActionPerformed(ActionEvent e) {
+		TreeNode selected = (TreeNode) tree.getLastSelectedPathComponent();
+		if (selected == null) {
 			JOptionPane.showMessageDialog(null, "Please select a user");
 		}
-		else if (node instanceof UserGroup) {
-			JOptionPane.showMessageDialog(null, "Please select a user");
+		else if (selected instanceof UserGroup) {
+			JOptionPane.showMessageDialog(null, "Please select a user, not a group");
 		}
 		else {
-			new UserView((User) node).setVisible(true);
+			new UserView((User) selected).setVisible(true);
 		}
 	}
 	
-	public void updateTree() {
-		
+	/** 
+	 * Refresh tree and expand nodes
+	 */
+	private void updateTree(){
+		defaultTree.reload(root);
+		for (int i = 0; i < tree.getRowCount(); i++)
+			tree.expandRow(i);
 	}
 }
