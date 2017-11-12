@@ -28,6 +28,10 @@ public class MessageTotal implements Visitor {
 		
 	}
 	
+	/**
+	 * 
+	 * @return Total number of messages
+	 */
 	public int getTotal() {
 		return message.size();
 	}

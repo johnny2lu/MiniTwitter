@@ -45,7 +45,7 @@ public class PositiveTotal implements Visitor {
 				}
 			}
 		}
-		return (count / message.size());
+		return (count / message.size()) * 100;
 	}
 
 }

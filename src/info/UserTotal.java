@@ -22,6 +22,10 @@ public class UserTotal implements Visitor {
 		count++;	
 	}
 	
+	/**
+	 * 
+	 * @return Total number of users in selected group
+	 */
 	public int getTotal() {
 		return count;
 	}

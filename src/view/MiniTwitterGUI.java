@@ -31,6 +31,7 @@ import java.util.Set;
 import java.awt.event.ActionEvent;
 import javax.swing.JTree;
 /**
+ * Main UI view
  * 
  * @author johnnylu
  *
@@ -236,7 +237,7 @@ public class MiniTwitterGUI extends JFrame {
 			JOptionPane.showMessageDialog(null, ((GroupTotal) visitor).getTotal());
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "There are no groups");
+			JOptionPane.showMessageDialog(null, "Please select a group");
 		}
 	}
 
@@ -255,8 +256,9 @@ public class MiniTwitterGUI extends JFrame {
 
 	/**
 	 * Initialize Singleton
+	 * @return 
 	 */
-	public static void getInstance() {
+	public static MiniTwitterGUI getInstance() {
 		if (INSTANCE == null) {
 			synchronized(MiniTwitterGUI.class) {
 				if (INSTANCE == null) {
@@ -269,6 +271,7 @@ public class MiniTwitterGUI extends JFrame {
 				}
 			}
 		}
+		return INSTANCE;
 	}
 	
 	protected void addUserButtonActionPerformed(ActionEvent e) {

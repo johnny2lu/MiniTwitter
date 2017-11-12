@@ -29,6 +29,11 @@ public class UserView extends JFrame implements Observer {
 	private JList<String> listFeed;
 	private JList<User> listFollowings;
 	
+	/**
+	 * Initialize UI components for UserView
+	 * 
+	 * @param johnnylu
+	 */
 	public UserView(User user) {
 		this.user = user;
 		txtUser = new JTextArea();
@@ -82,6 +87,9 @@ public class UserView extends JFrame implements Observer {
 		
 	}
 	
+	/**
+	 * Initialize Java Swing components for UserView
+	 */
 	public void initComponents() {
 		
 		JLabel lblCurrentlyFollowing = new JLabel("Currently Following");

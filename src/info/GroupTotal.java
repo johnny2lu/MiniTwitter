@@ -20,6 +20,10 @@ public class GroupTotal implements Visitor{
 			
 	}
 	
+	/**
+	 * 
+	 * @return Total number of all groups
+	 */
 	public int getTotal() {
 		return count;
 	}
