@@ -3,10 +3,14 @@ package data;
 import javax.swing.tree.TreeNode;
 
 import info.Visitor;
-import view.TwitterTree;
 
 import java.util.*;
 
+/**
+ * Component class of TwitterTree
+ * @author johnnylu
+ *
+ */
 public class UserGroup implements TwitterTree {
 	
 	private String uniqueID;

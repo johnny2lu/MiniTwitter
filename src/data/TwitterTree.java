@@ -1,10 +1,14 @@
-package view;
+package data;
 
-import data.User;
 import javax.swing.tree.TreeNode;
-import data.UserGroup;
+
 import info.Visitor;
 
+/**
+ * Composite class to manage User and UserGroup
+ * @author johnnylu
+ *
+ */
 public interface TwitterTree extends TreeNode {
 	
 	public User getUser(User user);

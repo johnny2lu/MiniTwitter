@@ -11,8 +11,12 @@ import java.util.Set;
 import javax.swing.tree.TreeNode;
 
 import info.Visitor;
-import view.TwitterTree;
 
+/**
+ * Component class of TwitterTree
+ * @author johnnylu
+ *
+ */
 public class User extends Observable implements Observer, TwitterTree{
 	
 	private String uniqueID;
@@ -27,11 +31,18 @@ public class User extends Observable implements Observer, TwitterTree{
 		newsFeed = new ArrayList<>();
 	}
 	
+	/**
+	 * Implement observer pattern
+	 * @param obs
+	 */
 	public void addObserver(User obs) {
 		followers.add(obs);
 		obs.following.add(this);
 	}
 
+	/** 
+	 * Reach out to observer objects and notify state change
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		if (arg instanceof String) {

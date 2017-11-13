@@ -17,7 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JList;
 import javax.swing.JLabel;
 
-public class UserView extends JFrame implements Observer {
+public class UserView extends JFrame {
 	
 	private User user;
 	private JTextArea txtUser;
@@ -79,12 +79,6 @@ public class UserView extends JFrame implements Observer {
 	protected void followUserActionPerformed(ActionEvent e) {
 		user.addObserver(new User(txtUser.getText()));
 		txtUser.setText("");
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	/**
