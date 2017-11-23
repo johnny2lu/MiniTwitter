@@ -11,7 +11,7 @@ import info.Visitor;
  */
 public interface TwitterTree extends TreeNode {
 	
-	public User getUser(User user);
+	public User getUser(String user);
 	
 	/**
 	 * Accept visitor object

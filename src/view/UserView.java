@@ -1,21 +1,19 @@
 package view;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import data.User;
-import javax.swing.GroupLayout;
+
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JTextArea;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JList;
-import javax.swing.JLabel;
+import javax.swing.border.EmptyBorder;
 
 public class UserView extends JFrame {
 	
@@ -28,21 +26,24 @@ public class UserView extends JFrame {
 	private JScrollPane scrollPaneFeed;
 	private JList<String> listFeed;
 	private JList<User> listFollowings;
+	private JPanel contentPane;
 	
 	/**
 	 * Initialize UI components for UserView
 	 * 
-	 * @param johnnylu
+	 * @author johnnylu
 	 */
 	public UserView(User user) {
+		setBounds(100, 100, 400, 600);
+		contentPane = new JPanel(new GridLayout(3, 1));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 		this.user = user;
 		txtUser = new JTextArea();
 		btnFollowUser = new JButton("Follow User");
 		scrollPaneFollowings = new JScrollPane();
 		txtTweet = new JTextArea();	
 		btnPostTweet = new JButton("Post Tweet");
-		scrollPaneFeed = new JScrollPane();
-		listFeed = new JList<>();
 		listFollowings = new JList<>();
 		initComponents();
 		initFollowUser();
@@ -64,6 +65,7 @@ public class UserView extends JFrame {
 	protected void postTweetActionPerformed(ActionEvent e) {
 		user.postTweet(txtTweet.getText());
 		txtTweet.setText("");
+		listFeed.setModel(user.getFeed());
 	}
 
 	private void initFollowUser() {
@@ -91,6 +93,19 @@ public class UserView extends JFrame {
 		JLabel lblTweetMessage = new JLabel("Tweet Message");
 		
 		JLabel lblNewsFeed = new JLabel("News Feed");
+
+		DefaultListModel<String> userNewsFeed = user.getFeed();
+		/**
+		 * Retrieve newsFeed if exists, otherwise create new
+		 */
+		if (userNewsFeed != null) {
+			listFeed = new JList(userNewsFeed);
+		}
+		else {
+			listFeed = new JList<>();
+		}
+		scrollPaneFeed = new JScrollPane(listFeed);
+
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

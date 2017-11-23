@@ -14,17 +14,27 @@ import java.util.*;
 public class UserGroup implements TwitterTree {
 	
 	private String uniqueID;
-	private Set<TwitterTree> children;
+	private List<TwitterTree> children;
+	private long creationTime;
 	
 	public UserGroup(String groupID) {
 		uniqueID = groupID;
-		children = new HashSet<>();
+		children = new ArrayList<>();
+		creationTime = System.currentTimeMillis();
+	}
+
+	public String toString() {
+		return uniqueID;
 	}
 
 	@Override
-	public User getUser(User user) {
-		return user;
-
+	public User getUser(String user) {
+		for (int i = 0; i < children.size(); i++) {
+			if (children.get(i).getUser(user) != null) {
+				return (User) children.get(i);
+			}
+		}
+		return null;
 	}
 	
 	public String getID() {
@@ -37,43 +47,36 @@ public class UserGroup implements TwitterTree {
 
 	@Override
 	public TreeNode getChildAt(int childIndex) {
-		// TODO Auto-generated method stub
-		return null;
+		return children.get(childIndex);
 	}
 
 	@Override
 	public int getChildCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return children.size();
 	}
 
 	@Override
 	public TreeNode getParent() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int getIndex(TreeNode node) {
-		// TODO Auto-generated method stub
-		return 0;
+		return children.indexOf(node);
 	}
 
 	@Override
 	public boolean getAllowsChildren() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isLeaf() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public Enumeration<?> children() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

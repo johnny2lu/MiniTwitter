@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
 
+import javax.swing.*;
 import javax.swing.tree.TreeNode;
 
 import info.Visitor;
@@ -22,13 +23,16 @@ public class User extends Observable implements Observer, TwitterTree{
 	private String uniqueID;
 	private Set<User> followers;
 	private Set<User> following;
-	private List<String> newsFeed;
+	private DefaultListModel<String> newsFeed;
+	private long creationTime;
+	private long lastUpdateTime;
 	
 	public User(String userID) {
 		uniqueID = userID;
 		followers = new HashSet<>();
 		following = new HashSet<>();
-		newsFeed = new ArrayList<>();
+		newsFeed = new DefaultListModel<>();
+		creationTime = System.currentTimeMillis();
 	}
 	
 	/**
@@ -36,6 +40,7 @@ public class User extends Observable implements Observer, TwitterTree{
 	 * @param obs
 	 */
 	public void addObserver(User obs) {
+		super.addObserver(obs);
 		followers.add(obs);
 		obs.following.add(this);
 	}
@@ -46,22 +51,36 @@ public class User extends Observable implements Observer, TwitterTree{
 	@Override
 	public void update(Observable o, Object arg) {
 		if (arg instanceof String) {
-			newsFeed.add((String) arg);
+			System.out.println("update called");
+			newsFeed.add(0, (String) arg);
 		}
 		
 	}
 
 	@Override
-	public User getUser(User user) {
-		return user;
+	public User getUser(String user) {
+		if (uniqueID.equals(user)) {
+			return this;
+		}
+		return null;
 	}
 
 	public void postTweet(String tweet) {
-		newsFeed.add(tweet);
+		newsFeed.addElement(tweet);
+		setChanged();
 		notifyObservers(tweet);
+		System.out.println("observers notified");
 	}
 
-	public List<String> getFeed() {
+	public String getUniqueID() {
+		return uniqueID;
+	}
+
+	public String toString() {
+		return uniqueID;
+	}
+
+	public DefaultListModel<String> getFeed() {
 		return newsFeed;
 	}
 	
@@ -76,12 +95,11 @@ public class User extends Observable implements Observer, TwitterTree{
 	@Override
 	public TreeNode getChildAt(int childIndex) {
 		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public int getChildCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -106,7 +124,7 @@ public class User extends Observable implements Observer, TwitterTree{
 	@Override
 	public boolean isLeaf() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

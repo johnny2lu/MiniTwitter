@@ -17,9 +17,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 
+import com.oracle.tools.packager.Log;
 import data.TwitterTree;
 import data.User;
 import data.UserGroup;
@@ -82,8 +84,9 @@ public class MiniTwitterGUI extends JFrame {
 
 		tree = new JTree(defaultTree);
 		tree.setRootVisible(true);
-		jscrollPane = new JScrollPane(tree);
 		updateTree();
+
+		jscrollPane = new JScrollPane(tree);
 
 		txtrGroupid = new JTextArea();
 
@@ -267,10 +270,15 @@ public class MiniTwitterGUI extends JFrame {
 		} else if (selected == null) {
 			JOptionPane.showMessageDialog(null, "Please select a group to add user to");
 		} else {
-			users.add(txtrUserid.getText());
-			((UserGroup) selected).add(new User(txtrUserid.getText()));
-			updateTree();
-			txtrUserid.setText("");
+			if (selected instanceof UserGroup) {
+				users.add(txtrUserid.getText());
+				((UserGroup) selected).add(new User(txtrUserid.getText()));
+				updateTree();
+				txtrUserid.setText("");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Please select a group to add user to");
+			}
 		}
 	}
 
