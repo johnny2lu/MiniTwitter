@@ -36,7 +36,12 @@ public class UserGroup implements TwitterTree {
 		}
 		return null;
 	}
-	
+
+	@Override
+	public long printCreationTime() {
+		return creationTime;
+	}
+
 	public String getID() {
 		return uniqueID;
 	}

@@ -65,6 +65,12 @@ public class User extends Observable implements Observer, TwitterTree{
 		return null;
 	}
 
+	@Override
+	public long printCreationTime() {
+		return creationTime;
+	}
+
+
 	public void postTweet(String tweet) {
 		newsFeed.addElement(tweet);
 		setChanged();
@@ -94,7 +100,6 @@ public class User extends Observable implements Observer, TwitterTree{
 
 	@Override
 	public TreeNode getChildAt(int childIndex) {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
@@ -105,31 +110,26 @@ public class User extends Observable implements Observer, TwitterTree{
 
 	@Override
 	public TreeNode getParent() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int getIndex(TreeNode node) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public boolean getAllowsChildren() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isLeaf() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public Enumeration<?> children() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

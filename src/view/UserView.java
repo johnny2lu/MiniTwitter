@@ -45,6 +45,7 @@ public class UserView extends JFrame {
 		txtTweet = new JTextArea();	
 		btnPostTweet = new JButton("Post Tweet");
 		listFollowings = new JList<>();
+		System.out.println("Creation time: " + user.printCreationTime());
 		initComponents();
 		initFollowUser();
 		initPostTweet();

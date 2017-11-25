@@ -6,15 +6,8 @@ import java.awt.event.ActionListener;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.swing.GroupLayout;
+import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTree;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -51,6 +44,7 @@ public class MiniTwitterGUI extends JFrame {
 	private JButton btnShowGroupTotal;
 	private JButton btnShowMessageTotal;
 	private JButton btnShowPositivePercentage;
+	private JButton btnValidateIDs;
 	private JTree tree;
 	private UserGroup root;
 	private DefaultTreeModel defaultTree;
@@ -143,6 +137,14 @@ public class MiniTwitterGUI extends JFrame {
 			}
 		});
 
+		btnValidateIDs = new JButton("Validate IDs");
+		btnValidateIDs.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				validateIDActionPerformed(e);
+			}
+		});
+
 		// Align JPanel window
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -193,6 +195,21 @@ public class MiniTwitterGUI extends JFrame {
 
 		jscrollPane.setColumnHeaderView(tree);
 		contentPane.setLayout(gl_contentPane);
+	}
+
+	/**
+	 * Check for duplicate User or Group IDs
+	 *
+	 * @param e
+	 */
+	protected void validateIDActionPerformed(ActionEvent e) {
+		// check for spaces
+		String s = " ";
+
+		if (root == null) {
+			JOptionPane.showMessageDialog(null, "There are no duplicates");
+		}
+
 	}
 
 	protected void showPercentageTotalActionPerformed(ActionEvent e) {
