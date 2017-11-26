@@ -8,19 +8,29 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import javax.swing.*;
+import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTree;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 
-import com.oracle.tools.packager.Log;
 import data.TwitterTree;
 import data.User;
 import data.UserGroup;
-import info.*;
+import info.GroupTotal;
+import info.MessageTotal;
+import info.PositiveTotal;
+import info.UserTotal;
+import info.ValidateVisitor;
+import info.Visitor;
 
 /**
  * Main UI view
@@ -154,33 +164,33 @@ public class MiniTwitterGUI extends JFrame {
 
 		// Align JPanel window
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addComponent(jscrollPane, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup()
+				.addComponent(jscrollPane, GroupLayout.PREFERRED_SIZE, 241, GroupLayout.PREFERRED_SIZE)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+						.createSequentialGroup()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addComponent(btnShowUserTotal)
+								.addComponent(btnShowMessageTotal, GroupLayout.PREFERRED_SIZE, 155,
+										GroupLayout.PREFERRED_SIZE))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(btnShowUserTotal).addComponent(btnShowMessageTotal,
-														GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(btnShowPositivePercentage, GroupLayout.PREFERRED_SIZE,
-														201, Short.MAX_VALUE)
-												.addComponent(btnShowGroupTotal, GroupLayout.PREFERRED_SIZE, 201,
-														Short.MAX_VALUE)))
-								.addComponent(btnOpenUserView, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-												.addComponent(txtrGroupid).addComponent(txtrUserid,
-														GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(btnAddGroup, GroupLayout.DEFAULT_SIZE, 205,
-														Short.MAX_VALUE)
-												.addComponent(btnAddUser, GroupLayout.DEFAULT_SIZE, 205,
-														Short.MAX_VALUE))))
-						.addContainerGap()));
+								.addComponent(btnShowPositivePercentage, GroupLayout.PREFERRED_SIZE, 201,
+										Short.MAX_VALUE)
+								.addComponent(btnShowGroupTotal, GroupLayout.PREFERRED_SIZE, 201, Short.MAX_VALUE)))
+						.addComponent(btnOpenUserView, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createSequentialGroup().addGroup(
+								gl_contentPane.createParallelGroup(Alignment.LEADING, false).addComponent(txtrGroupid)
+										.addComponent(txtrUserid, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+										.addComponent(btnValidateIDs, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnAddGroup, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+										.addComponent(btnAddUser, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+										.addComponent(btnLastUpdatedUser, GroupLayout.DEFAULT_SIZE, 150,
+												Short.MAX_VALUE))))
+				.addContainerGap()));
+
 		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
 				.createSequentialGroup().addGap(20)
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
@@ -196,7 +206,11 @@ public class MiniTwitterGUI extends JFrame {
 				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE).addComponent(btnShowMessageTotal)
 						.addComponent(btnShowPositivePercentage, GroupLayout.PREFERRED_SIZE, 29,
 								GroupLayout.PREFERRED_SIZE))
-				.addGap(80))
+				.addGap(50)
+				.addGroup(gl_contentPane.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+						.addComponent(btnValidateIDs, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnLastUpdatedUser, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+				.addGap(32))
 				.addGroup(gl_contentPane.createSequentialGroup()
 						.addComponent(jscrollPane, GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE).addContainerGap()));
 
@@ -206,21 +220,23 @@ public class MiniTwitterGUI extends JFrame {
 
 	/**
 	 * Show most recently updated user from time attribute
+	 * 
 	 * @param e
 	 */
 	public void showLastUpdatedUser(ActionEvent e) {
 		long maxTime = 0;
 		Map<User, Long> map = new HashMap<>();
-		for (User u: users) {
-			if (u.getCreationTime() > maxTime) {
+		for (User u : users) {
+			if (u.getLastUpdateTime() > maxTime) {
 				map.clear();
-				map.put(u, u.getCreationTime());
+				maxTime = u.getLastUpdateTime();
+				map.put(u, u.getLastUpdateTime());
 			}
 		}
 		if (map.isEmpty()) {
-			JOptionPane.showMessageDialog(null, "There are no users");
-		}
-		else {
+			JOptionPane.showMessageDialog(null, "Last update unknown");
+		} else {
+			// get the first User with the latest maxTime value
 			JOptionPane.showMessageDialog(null, map.keySet().stream().findFirst().get());
 		}
 	}
@@ -231,13 +247,13 @@ public class MiniTwitterGUI extends JFrame {
 	 * @param e
 	 */
 	protected void validateIDActionPerformed(ActionEvent e) {
-		ValidateVisitor validVisitor = new ValidateVisitor();
+		ValidateVisitor validVisitor = new ValidateVisitor(users);
 		root.accept(validVisitor);
 		if (validVisitor.isValid()) {
 			JOptionPane.showMessageDialog(null, "There are no duplicate IDs");
 		}
-		else {
-			JOptionPane.showMessageDialog(null, "There are duplicate IDs");
+		else  {
+			JOptionPane.showMessageDialog(null, "There are duplicate IDs or IDs with spaces");
 
 		}
 
@@ -324,8 +340,7 @@ public class MiniTwitterGUI extends JFrame {
 				((UserGroup) selected).add(newUser);
 				updateTree();
 				txtrUserid.setText("");
-			}
-			else {
+			} else {
 				JOptionPane.showMessageDialog(null, "Please select a group to add user to");
 			}
 		}

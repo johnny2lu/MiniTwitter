@@ -1,5 +1,6 @@
 package data;
 
+import java.awt.*;
 import java.util.*;
 
 import javax.swing.*;
@@ -69,7 +70,8 @@ public class User extends Observable implements Observer, TwitterTree{
 	public void postTweet(String tweet) {
 		lastUpdateTime = System.currentTimeMillis();
 		Date date = new Date(lastUpdateTime);
-		newsFeed.addElement(date + ": " + tweet);
+		System.out.println(date + ": " + tweet);
+		newsFeed.addElement(tweet);
 		setChanged();
 		notifyObservers(tweet);
 		System.out.println("observers notified");
@@ -97,6 +99,10 @@ public class User extends Observable implements Observer, TwitterTree{
 
 	public long getCreationTime() {
 		return creationTime;
+	}
+
+	public long getLastUpdateTime() {
+		return lastUpdateTime;
 	}
 
 	@Override
@@ -138,6 +144,14 @@ public class User extends Observable implements Observer, TwitterTree{
 	public void accept(Visitor visitor) {
 		visitor.visit(this);
 		
+	}
+
+	@Override
+	public boolean contains(Visitor visitor) {
+		if (visitor instanceof User) {
+			return this.toString().equals(visitor.toString());
+		}
+		return false;
 	}
 
 }

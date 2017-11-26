@@ -93,4 +93,12 @@ public class UserGroup implements TwitterTree {
 		}
 	}
 
+	@Override
+	public boolean contains(Visitor visitor) {
+		if (visitor instanceof UserGroup) {
+			return this.toString().equals(visitor.toString());
+		}
+		return false;
+	}
+
 }

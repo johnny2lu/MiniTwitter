@@ -1,6 +1,9 @@
 package info;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import data.User;
@@ -8,9 +11,9 @@ import data.UserGroup;
 
 public class PositiveTotal implements Visitor {
 	
-	private List<String> message;
+	private ArrayList<String> message;
 	private final String[] POSITIVE_WORDS = {"hello", "world", "nice", "to", "meet", "you",
-												"today", "is", "a", "good", "day"};
+												"today", "is", "good", "day"};
 	
 	public PositiveTotal() {
 		message = new ArrayList<>();
@@ -21,11 +24,13 @@ public class PositiveTotal implements Visitor {
 		
 	}
 
+	/**
+	 * Add each newsFeed message into message
+	 * @param visitor
+	 */
 	@Override
 	public void visit(User visitor) {
-		for (int i = 0;i < visitor.getFeed().size(); i++) {
-			message.add(visitor.getFeed().get(i));
-		}
+		message = Collections.list(visitor.getFeed().elements());
 	}
 	
 	/**
@@ -34,6 +39,7 @@ public class PositiveTotal implements Visitor {
 	 */
 	public float getTotal() {
 		float count = 0f;
+		int countWords = 0;
 		for (int i = 0; i < message.size(); i++) {
 			/**
 			 * Check if any words from news feed match list of positive words
@@ -43,8 +49,10 @@ public class PositiveTotal implements Visitor {
 					count++;
 				}
 			}
+			// Get word count separated by white space
+			countWords += message.get(i).split("\\s+").length;
 		}
-		return (count / message.size()) * 100;
+		return (count / countWords) * 100;
 	}
 
 }
