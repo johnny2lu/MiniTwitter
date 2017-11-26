@@ -3,6 +3,7 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -45,7 +46,7 @@ public class UserView extends JFrame {
 		txtTweet = new JTextArea();	
 		btnPostTweet = new JButton("Post Tweet");
 		listFollowings = new JList<>();
-		System.out.println("Creation time: " + user.printCreationTime());
+		printCreationTime();
 		initComponents();
 		initFollowUser();
 		initPostTweet();
@@ -61,6 +62,11 @@ public class UserView extends JFrame {
 			
 		});
 		
+	}
+
+	private void printCreationTime() {
+		Date date = new Date(user.printCreationTime());
+		System.out.println("Creation time: " + date);
 	}
 
 	protected void postTweetActionPerformed(ActionEvent e) {

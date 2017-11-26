@@ -12,7 +12,7 @@ import java.util.*;
  *
  */
 public class UserGroup implements TwitterTree {
-	
+
 	private String uniqueID;
 	private List<TwitterTree> children;
 	private long creationTime;

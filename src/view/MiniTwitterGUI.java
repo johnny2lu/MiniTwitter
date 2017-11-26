@@ -3,7 +3,9 @@ package view;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.swing.*;
@@ -18,11 +20,7 @@ import com.oracle.tools.packager.Log;
 import data.TwitterTree;
 import data.User;
 import data.UserGroup;
-import info.GroupTotal;
-import info.MessageTotal;
-import info.PositiveTotal;
-import info.UserTotal;
-import info.Visitor;
+import info.*;
 
 /**
  * Main UI view
@@ -45,11 +43,12 @@ public class MiniTwitterGUI extends JFrame {
 	private JButton btnShowMessageTotal;
 	private JButton btnShowPositivePercentage;
 	private JButton btnValidateIDs;
+	private JButton btnLastUpdatedUser;
 	private JTree tree;
 	private UserGroup root;
 	private DefaultTreeModel defaultTree;
-	private Set<String> users;
-	private Set<String> groups;
+	private Set<User> users;
+	private Set<UserGroup> groups;
 
 	/**
 	 * Create the frame.
@@ -57,11 +56,11 @@ public class MiniTwitterGUI extends JFrame {
 	public MiniTwitterGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 625, 696);
-		contentPane = new JPanel(new GridLayout(3, 1));
+		contentPane = new JPanel(new GridLayout(1, 2));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		users = new HashSet<String>();
-		groups = new HashSet<String>();
+		users = new HashSet<>();
+		groups = new HashSet<>();
 		initComponents();
 	}
 
@@ -145,6 +144,14 @@ public class MiniTwitterGUI extends JFrame {
 			}
 		});
 
+		btnLastUpdatedUser = new JButton("Show Last Updated User");
+		btnLastUpdatedUser.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				showLastUpdatedUser(e);
+			}
+		});
+
 		// Align JPanel window
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -198,16 +205,40 @@ public class MiniTwitterGUI extends JFrame {
 	}
 
 	/**
+	 * Show most recently updated user from time attribute
+	 * @param e
+	 */
+	public void showLastUpdatedUser(ActionEvent e) {
+		long maxTime = 0;
+		Map<User, Long> map = new HashMap<>();
+		for (User u: users) {
+			if (u.getCreationTime() > maxTime) {
+				map.clear();
+				map.put(u, u.getCreationTime());
+			}
+		}
+		if (map.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "There are no users");
+		}
+		else {
+			JOptionPane.showMessageDialog(null, map.keySet().stream().findFirst().get());
+		}
+	}
+
+	/**
 	 * Check for duplicate User or Group IDs
 	 *
 	 * @param e
 	 */
 	protected void validateIDActionPerformed(ActionEvent e) {
-		// check for spaces
-		String s = " ";
+		ValidateVisitor validVisitor = new ValidateVisitor();
+		root.accept(validVisitor);
+		if (validVisitor.isValid()) {
+			JOptionPane.showMessageDialog(null, "There are no duplicate IDs");
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "There are duplicate IDs");
 
-		if (root == null) {
-			JOptionPane.showMessageDialog(null, "There are no duplicates");
 		}
 
 	}
@@ -288,8 +319,9 @@ public class MiniTwitterGUI extends JFrame {
 			JOptionPane.showMessageDialog(null, "Please select a group to add user to");
 		} else {
 			if (selected instanceof UserGroup) {
-				users.add(txtrUserid.getText());
-				((UserGroup) selected).add(new User(txtrUserid.getText()));
+				User newUser = new User(txtrUserid.getText());
+				users.add(newUser);
+				((UserGroup) selected).add(newUser);
 				updateTree();
 				txtrUserid.setText("");
 			}
@@ -310,8 +342,9 @@ public class MiniTwitterGUI extends JFrame {
 			if (selected == null) {
 				root.add(new UserGroup(txtrGroupid.getText()));
 			} else {
-				((UserGroup) selected).add(new UserGroup(txtrGroupid.getText()));
-				groups.add(txtrGroupid.getText());
+				UserGroup newUserGroup = new UserGroup(txtrGroupid.getText());
+				groups.add(newUserGroup);
+				((UserGroup) selected).add(newUserGroup);
 				updateTree();
 				txtrGroupid.setText("");
 			}

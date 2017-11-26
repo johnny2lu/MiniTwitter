@@ -18,7 +18,6 @@ public class PositiveTotal implements Visitor {
 
 	@Override
 	public void visit(UserGroup visitor) {
-		// TODO Auto-generated method stub
 		
 	}
 

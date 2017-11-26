@@ -1,12 +1,6 @@
 package data;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
+import java.util.*;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
@@ -33,6 +27,7 @@ public class User extends Observable implements Observer, TwitterTree{
 		following = new HashSet<>();
 		newsFeed = new DefaultListModel<>();
 		creationTime = System.currentTimeMillis();
+		lastUpdateTime = 0;
 	}
 	
 	/**
@@ -72,7 +67,9 @@ public class User extends Observable implements Observer, TwitterTree{
 
 
 	public void postTweet(String tweet) {
-		newsFeed.addElement(tweet);
+		lastUpdateTime = System.currentTimeMillis();
+		Date date = new Date(lastUpdateTime);
+		newsFeed.addElement(date + ": " + tweet);
 		setChanged();
 		notifyObservers(tweet);
 		System.out.println("observers notified");
@@ -96,6 +93,10 @@ public class User extends Observable implements Observer, TwitterTree{
 	
 	public Set<User> getFollowers() {
 		return followers;
+	}
+
+	public long getCreationTime() {
+		return creationTime;
 	}
 
 	@Override
