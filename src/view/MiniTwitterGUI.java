@@ -247,7 +247,7 @@ public class MiniTwitterGUI extends JFrame {
 	 * @param e
 	 */
 	protected void validateIDActionPerformed(ActionEvent e) {
-		ValidateVisitor validVisitor = new ValidateVisitor(users);
+		ValidateVisitor validVisitor = new ValidateVisitor();
 		root.accept(validVisitor);
 		if (validVisitor.isValid()) {
 			JOptionPane.showMessageDialog(null, "There are no duplicate IDs");

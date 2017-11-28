@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c270adee-7cfe-4731-afb9-dfd6903652f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/data/TwitterTree.class" afterPath="$PROJECT_DIR$/bin/data/TwitterTree.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/data/User.class" afterPath="$PROJECT_DIR$/bin/data/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/data/UserGroup.class" afterPath="$PROJECT_DIR$/bin/data/UserGroup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/info/MessageTotal.class" afterPath="$PROJECT_DIR$/bin/info/MessageTotal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/info/PositiveTotal.class" afterPath="$PROJECT_DIR$/bin/info/PositiveTotal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$1.class" afterPath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$2.class" afterPath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$3.class" afterPath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$4.class" afterPath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$5.class" afterPath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$6.class" afterPath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$7.class" afterPath="$PROJECT_DIR$/bin/view/MiniTwitterGUI$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/MiniTwitterGUI.class" afterPath="$PROJECT_DIR$/bin/view/MiniTwitterGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/UserView$1.class" afterPath="$PROJECT_DIR$/bin/view/UserView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/UserView$2.class" afterPath="$PROJECT_DIR$/bin/view/UserView$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/view/UserView.class" afterPath="$PROJECT_DIR$/bin/view/UserView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/TwitterTree.java" afterPath="$PROJECT_DIR$/src/data/TwitterTree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/User.java" afterPath="$PROJECT_DIR$/src/data/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/UserGroup.java" afterPath="$PROJECT_DIR$/src/data/UserGroup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/info/PositiveTotal.java" afterPath="$PROJECT_DIR$/src/info/PositiveTotal.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/info/ValidateVisitor.java" afterPath="$PROJECT_DIR$/src/info/ValidateVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/MiniTwitterGUI.java" afterPath="$PROJECT_DIR$/src/view/MiniTwitterGUI.java" />
     </list>
@@ -39,7 +19,7 @@
       <file leaf-file-name="Driver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Driver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="195">
               <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
@@ -49,8 +29,8 @@
       <file leaf-file-name="MiniTwitterGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/MiniTwitterGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="255" column="91" lean-forward="false" selection-start-line="255" selection-start-column="91" selection-end-line="255" selection-end-column="91" />
+            <state relative-caret-position="3165">
+              <caret line="259" column="5" lean-forward="true" selection-start-line="259" selection-start-column="5" selection-end-line="259" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -59,8 +39,8 @@
       <file leaf-file-name="MessageTotal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/info/MessageTotal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+            <state relative-caret-position="0">
+              <caret line="0" column="13" lean-forward="true" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -69,16 +49,18 @@
       <file leaf-file-name="ValidateVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/info/ValidateVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+            <state relative-caret-position="0">
+              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#310#311#0" expanded="true" />
+                <element signature="e#356#357#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TwitterTree.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TwitterTree.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/data/TwitterTree.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -88,15 +70,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PositiveTotal.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PositiveTotal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/info/PositiveTotal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="49" column="17" lean-forward="true" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
-              <folding>
-                <element signature="e#651#652#0" expanded="true" />
-                <element signature="e#714#715#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="27" column="45" lean-forward="false" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,12 +83,9 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="712">
-              <caret line="70" column="46" lean-forward="true" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
-              <folding>
-                <element signature="e#1789#1790#0" expanded="true" />
-                <element signature="e#1812#1813#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="919">
+              <caret line="70" column="46" lean-forward="false" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,12 +129,12 @@
         <option value="$PROJECT_DIR$/src/view/form.form" />
         <option value="$PROJECT_DIR$/src/view/UserView.java" />
         <option value="$PROJECT_DIR$/src/info/MessageTotal.java" />
-        <option value="$PROJECT_DIR$/src/view/MiniTwitterGUI.java" />
-        <option value="$PROJECT_DIR$/src/info/ValidateVisitor.java" />
         <option value="$PROJECT_DIR$/src/data/TwitterTree.java" />
         <option value="$PROJECT_DIR$/src/data/UserGroup.java" />
         <option value="$PROJECT_DIR$/src/data/User.java" />
         <option value="$PROJECT_DIR$/src/info/PositiveTotal.java" />
+        <option value="$PROJECT_DIR$/src/view/MiniTwitterGUI.java" />
+        <option value="$PROJECT_DIR$/src/info/ValidateVisitor.java" />
       </list>
     </option>
   </component>
@@ -171,8 +147,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="1313" />
     <option name="y" value="-265" />
-    <option name="width" value="1365" />
-    <option name="height" value="1348" />
+    <option name="width" value="1229" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -189,7 +165,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -224,9 +203,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -374,31 +350,32 @@
       <workItem from="1511668735756" duration="4310000" />
       <workItem from="1511678327816" duration="2834000" />
       <workItem from="1511688295105" duration="4733000" />
-      <workItem from="1511724315501" duration="3176000" />
+      <workItem from="1511724315501" duration="3361000" />
+      <workItem from="1511842302220" duration="2906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33963000" />
+    <option name="totallyTimeSpent" value="37054000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1313" y="-265" width="1365" height="1348" extended-state="0" />
+    <frame x="1313" y="-265" width="1229" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277635" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18515563" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29820052" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21682848" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1570946" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15419501" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17438921" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -447,6 +424,8 @@
           <caret line="26" column="72" lean-forward="true" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#310#311#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -463,10 +442,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="40" column="61" lean-forward="true" selection-start-line="40" selection-start-column="61" selection-end-line="40" selection-end-column="61" />
-          <folding>
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -474,10 +450,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
           <caret line="138" column="17" lean-forward="false" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
-          <folding>
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -509,10 +482,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
-          <folding>
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -568,10 +538,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="76" column="47" lean-forward="false" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
-          <folding>
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -619,10 +586,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
           <caret line="70" column="31" lean-forward="false" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
-          <folding>
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -662,10 +626,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="64" column="24" lean-forward="false" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-          <folding>
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -705,10 +666,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="64" column="24" lean-forward="false" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-          <folding>
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -755,16 +713,8 @@
     <entry file="file://$PROJECT_DIR$/src/view/form.java" />
     <entry file="file://$PROJECT_DIR$/src/main/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="195">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/info/MessageTotal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -785,26 +735,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/TwitterTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/info/Visitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/MiniTwitterGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="255" column="91" lean-forward="false" selection-start-line="255" selection-start-column="91" selection-end-line="255" selection-end-column="91" />
           <folding />
         </state>
       </provider>
@@ -817,35 +751,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/info/PositiveTotal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="27" column="45" lean-forward="false" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="712">
-          <caret line="70" column="46" lean-forward="true" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
-          <folding>
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="919">
+          <caret line="70" column="46" lean-forward="false" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/MiniTwitterGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3165">
+          <caret line="259" column="5" lean-forward="true" selection-start-line="259" selection-start-column="5" selection-end-line="259" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/info/ValidateVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="47" lean-forward="false" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#310#311#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/info/PositiveTotal.java">
+    <entry file="file://$PROJECT_DIR$/src/info/MessageTotal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="49" column="17" lean-forward="true" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
-          <folding>
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="true" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/TwitterTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
